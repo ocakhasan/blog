@@ -13,3 +13,5 @@ The easiest way to make your first post is to edit this one. Go into /_posts/ an
 def main():
     print("Hello World")
 ```
+
+\(x^2 + y^2 = z^2\)
