@@ -66,7 +66,7 @@ class KNN:
         self.uzaklık = uzaklık
 ```
 
-Üstteki kod bloğunda yaptığımız işlem aslında modelin parametrelini `constructor` fonskiyonunda tanımlamak oldu. 
+Üstteki kod bloğunda yaptığımız işlem aslında modelin parametrelerini `constructor` fonskiyonunda tanımlamak oldu. 
 
 Şimdi modelin eğitme fonksiyonunu yazalım. 
 
@@ -147,7 +147,7 @@ class KNN:
             elif self.uzaklık == "manhattan":
                 uzaklık = np.sum(np.abs(self.X - point), axis=1)
         
-            indices = np.argsort(distances)[:self.k]                        
+            indices = np.argsort(uzaklık)[:self.k]                        
             near_labels = self.y[indices]                                   
             labels, values =  np.unique(near_labels, return_counts=True)      
             max_ind_label = np.argmax(values)                               
