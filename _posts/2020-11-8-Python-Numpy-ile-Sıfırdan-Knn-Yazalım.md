@@ -17,9 +17,13 @@ Peki bu yakınlık uzaklık ilişkisi nasıl kurulur önce ona bakalım. Uzaklı
 
 Manhattan uzaklığında aslında iki nokta arasında uzaklığı alırken normal 2 boyutlu denklemde nasıl alıyorsak, bunun n boyutlu formüle döndürülmüş halidir. 
 
-Örnek olarak $a = (x_1, y_1)$ ve $b = (x_2, y_2)$ olsun. Bu noktalar arasında uzaklığı bulurken yaptığımız işlem $$d(a, b) = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}$$
+Örnek olarak $a = (x_1, y_1)$ ve $b = (x_2, y_2)$ olsun. Bu noktalar arasında uzaklığı bulurken yaptığımız işlem 
 
-Peki eğer bizim verimiz n boyutlu olursa bu uzaklık nasıl ölçülecek?. Bu durumda ise uzaklık $$d(a,b)= \sum_{i=1}^n (a_i - b_i)^2$$
+$$d(a, b) = \sqrt{(x_1 - x_2)^2 + (y_1 - y_2)^2}$$
+
+Peki eğer bizim verimiz n boyutlu olursa bu uzaklık nasıl ölçülecek?. Bu durumda ise uzaklık 
+
+$$d(a,b)= \sum_{i=1}^n (a_i - b_i)^2$$
 
 Bu formulu ise Numpy ile şu şekilde yazabiliriz
 
