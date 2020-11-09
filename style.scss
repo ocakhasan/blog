@@ -45,22 +45,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 25px;
   a {
     color: inherit;
   }
 }
 
 h2 {
-  font-size: 24px;
-}
-
-h3 {
   font-size: 20px;
 }
 
+h3 {
+  font-size: 15px;
+}
+
 h4 {
-  font-size: 18px;
+  font-size: 13px;
   color: $gray;
 }
 
