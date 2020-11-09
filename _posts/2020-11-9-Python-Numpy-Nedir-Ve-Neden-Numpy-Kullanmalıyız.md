@@ -328,20 +328,16 @@ a2[:, 0] # İlk sutün
 ```
 
 
-
-
-    array([  3,   1, 100,  12])
-
-
-
+```
+array([  3,   1, 100,  12])
+```
 
 ```python
 a2[0, :] # İlk satır
 ```
 
+```
+array([3, 4, 5, 6])
+```
 
-
-
-    array([3, 4, 5, 6])
-
-
+I will ad other features to see how it is going
