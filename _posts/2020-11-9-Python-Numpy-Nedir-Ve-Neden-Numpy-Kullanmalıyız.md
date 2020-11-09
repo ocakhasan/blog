@@ -2,7 +2,9 @@
 layout: post
 title: Kapsamlı Şekilde Python Numpy Öğrenelim
 ---
+# NUMPY 
 
+![Numpy Logo]({{ site.baseurl }}/images/numpy_logo.png)
 ```python
 import numpy as np
 ```
