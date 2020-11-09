@@ -4,12 +4,13 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+Bazı konularda öğrendiklerini anlatmaya çalışan bir öğrenci. 
 
 ### More Information
 
-A place to include any other types of information that you'd like to include about yourself.
+Bu blogda genellikle teknik konulardan bazen de gündelik konulardan bahsedilir. Teknik konuları da anlatan kişi öğrenci olduğu için kullanıcıdan genellikle bir bilgi beklemeden konular anlatılmaya çalışılır. 
+
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[ocakhasan99@gmail.com](mailto:ocakhasan@gmail.com)
