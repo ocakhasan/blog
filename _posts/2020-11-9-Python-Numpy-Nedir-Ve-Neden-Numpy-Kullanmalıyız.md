@@ -42,13 +42,13 @@ Birinci elemanın birinci elemanı 1
 
 
 
-*   Arrayin boyutlarını öğrenmek için yapmamız gereken `***array.shape***` yazmak olacaktır
+*   Arrayin boyutlarını öğrenmek için yapmamız gereken `**array.shape**` yazmak olacaktır
 
-* Arrayin rankini öğrenmek için yapmamız gereken` ***array.ndim***` yazmak olacaktır
+* Arrayin rankini öğrenmek için yapmamız gereken` **array.ndim**` yazmak olacaktır
 
-* Arrayin boyutunu öğrenmek için yapmamız gereken `***array.size***` yazmak olacaktır
+* Arrayin boyutunu öğrenmek için yapmamız gereken `**array.size**` yazmak olacaktır
 
-* Arrayin barındırdığı veri tipini  öğrenmek için yapmamız gereken `***array.dtype***` yazmak olacaktır
+* Arrayin barındırdığı veri tipini  öğrenmek için yapmamız gereken `**array.dtype**` yazmak olacaktır
 
 
 
