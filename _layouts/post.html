@@ -15,7 +15,9 @@ layout: default
 
   <h2>Diğer Yazılar</h2>
   {% for post in site.posts limit:5 %}
-    <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+    {% if page.title != post.title %}
+      <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+    {% endif %}
   {% endfor %}
 
   {% include disqus.html %}
