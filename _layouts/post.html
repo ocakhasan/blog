@@ -13,5 +13,9 @@ layout: default
     Written on {{ page.date | date: "%B %e, %Y" }}
   </div>
 
+  {% for post in site.posts limit:1 %}
+    <h2>{{post.title}}</h2>
+  {% endfor %}
+
   {% include disqus.html %}
 </article>
