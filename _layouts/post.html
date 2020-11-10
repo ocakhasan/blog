@@ -14,7 +14,7 @@ layout: default
   </div>
 
   <h2>Diğer Yazılar</h2>
-  {% for post in site.posts limit:1 %}
+  {% for post in site.posts limit:5 %}
     <h3><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
   {% endfor %}
 
