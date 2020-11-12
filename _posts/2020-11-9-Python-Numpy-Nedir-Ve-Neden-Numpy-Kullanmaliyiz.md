@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Kapsamlı Şekilde Python Numpy Öğrenelim
+title: Kapsamli Şekilde Python Numpy Öğrenelim
 ---
 # NUMPY 
 
