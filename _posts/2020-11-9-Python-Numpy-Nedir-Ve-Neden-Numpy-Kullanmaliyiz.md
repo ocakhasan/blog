@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Kapsamli Şekilde Python Numpy Öğrenelim
+preview: Bu yazıda Python Numpy Kütüphanesini inceliyoruz. 
 ---
 # NUMPY 
 
