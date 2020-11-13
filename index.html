@@ -5,9 +5,9 @@ layout: default
 <div class="posts">
   {% for post in site.posts %}
     <article class="post">
-      <small>{{ post.date | date: "%B %e, %Y" }}</small>
-      <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
-      <p>{{ post.preview }}</p>
+      <small class="font-16">{{ post.date | date: "%B %e, %Y" }}</small>
+      <h2 class="zero-margin"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+      <p class="ten-margin">{{ post.preview }}</p>
 
     </article>
   {% endfor %}
