@@ -22,6 +22,10 @@ body {
   font: 18px/1.4 $helvetica;
   color: $darkGray;
 }
+.img-count{
+  display:flex;
+  justify-content: center;
+}
 
 .container {
   margin: 0 auto;

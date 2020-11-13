@@ -7,8 +7,11 @@ layout: default
     <article class="post">
       <small class="font-16">{{ post.date | date: "%B %e, %Y" }}</small>
       <h2 class="zero-margin"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
-      <p class="five-margin">{{ post.preview }}</p>
+      <p class="ten-margin">{{ post.preview }}</p>
 
     </article>
   {% endfor %}
+  <div class="img-count">
+    <img class="hit-count" src="https://hitcounter.pythonanywhere.com/count/tag.svg?url=https%3A%2F%2Focakhasan.github.io%2Fblog%2F" alt="Hits">
+  </div>
 </div>
