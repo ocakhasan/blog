@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Dinamik Programlama ile Knapsack Problemi Nasil Çozulur
+title: Dinamik Programlama ile Knapsack Problemi Nasil Cozulur
 preview: Meşhur Knapscak problemini dinamik programlama ile çözüyoruz. 
 ---
 
