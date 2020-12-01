@@ -39,12 +39,16 @@ $$
 N(\mu , \sigma^{2}) = p(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x - \mu)^2}{2\sigma^{2}}}
 $$
 
-O zaman verilen sampleın $X = \{ x^t\}_{t=1}^{N}$ log likelihood değeri de şu şekilde olur $ 
+O zaman verilen sampleın $X = \{ x^t\}_{t=1}^{N}$ log likelihood değeri de şu şekilde olur.
+
+
 $$
 l(\mu, \sigma | X) = -\frac{N}{2}\log(2\pi) - N \log(\sigma)  - \frac{\sum_{t}(x^t - \mu)^{2}}{2\sigma^{2}}
 $$
 
-Daha sonra sırayla bu fonksiyonun ortalama değer ve varyans için partial türevlerini alıp sıfıra eşitlediğimizde ortaya şöyle bir sonuç çıkıyor. 
+Daha sonra sırayla bu fonksiyonun ortalama değer ve varyans için partial türevlerini alıp sıfıra eşitlediğimizde ortaya şöyle bir sonuç çıkıyor.
+
+
 $$
 m = \frac{\sum_{t}x^t}{N}
 $$
