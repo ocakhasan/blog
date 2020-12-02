@@ -57,9 +57,9 @@ $$
 s^2 = \frac{\sum_{t}(x^t - m)^2}{N}
 $$
 
-Burada $m$ ortalama değer için maximum likelihood estimate oluyor ve $s^2$ ise varyans için maximum likelihood estimate oluyor. Bu durumda istenilen parametreleri bulmuş olduk. Bundan sonraki yazıda ise bias(önyargı) ve Varyans(Variance) konuları işleyeceğiz.
+Burada $m$ `ortalama değer` için maximum likelihood estimate oluyor ve $s^2$ ise `varyans` için maximum likelihood estimate oluyor. Bu durumda istenilen parametreleri bulmuş olduk. Bundan sonraki yazıda ise bias(önyargı) ve Varyans(Variance) konuları işleyeceğiz.
 
-Esen kalın.
+Sonraki yazılarda görüşmek üzere. 
 
 
 
