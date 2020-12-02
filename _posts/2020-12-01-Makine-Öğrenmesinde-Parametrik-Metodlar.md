@@ -7,17 +7,17 @@ preview: İstatiksel biçimde parametrik metodları inceliyoruz.
 
 *İstatistik*, verilen bir örneklemden(sample) elde edilen herhangi bir değer demektir. İstatistiksel öğrenmede, verilen sampledan sağlanan bilgi ile karar verilir. İlk yaklaşımımız, sample'ın belirli bir dağılımdan (distribution) geldiğini farz ederek yapmak olacaktır. Bu dağılıma örnek olarak *Gaussian dağılım* verilebilir. Bu durumun avantajı ise, parametre sayısının azaltılması olacaktır. Tüm parametrelerimiz ortalama değer (mean) ve varyans (variance) olacaktır. Bu parametreleri sample tarafından elde ettikten sonra, bütün dağılımı biliyor olacağız. Bu parametreleri verilen sample üzerinden öğrenip, daha sonra bu bulduğumuz ortalama ve varyans değerlerini modele entegre ederek, tahmini bir dağılım elde edeceğiz. Daha sonra bu dağılımı da karar vermek için kullanacağız. 
 
-Öncelikle olasılık kavramı diğer ismiyle density estimation (yoğunluk tahmini) anlamına gelen $p\left(x\right)$ kavramı ile başlıyoruz. Bu kavramı, Naive Bayesde de olduğu gibi tahmini olasılıkların $p(x | C_{i})$, ve prior olasılık olan $P\left(C_{i}\right)$ olduğu ve bu olasılıkların daha sonra asıl amaç olan $P\left(C_{i} | x\right)$'i tahmin ederek sınıflandırma işlemi yapılması için kullanıyoruz. Peki bu parametreleri nasıl öğreneceğiz. Maksimum Likelihood Estimation kullanarak yapacağız. 
+Öncelikle olasılık kavramı diğer ismiyle density estimation (yoğunluk tahmini) anlamına gelen $p\left(x\right)$ kavramı ile başlıyoruz. Bu kavramı, Naive Bayesde de olduğu gibi tahmini olasılıkların $p(x \mid C_{i})$, ve prior olasılık olan $P\left(C_{i}\right)$ olduğu ve bu olasılıkların daha sonra asıl amaç olan $P\left(C_{i} \mid x\right)$'i tahmin ederek sınıflandırma işlemi yapılması için kullanıyoruz. Peki bu parametreleri nasıl öğreneceğiz. Maksimum Likelihood Estimation kullanarak yapacağız. 
 
 ### Maximum Likelihood Estimation (Maksimum Olasılık Tahmini)
 
-Elimizde birbirinden bağımsız ve aynı şekilde dağıtılmış olan bir sample var. Bu sample'ı $X = \{ x^{t} \}_{i=1}^{N}$ şeklinde gösterebiliriz. Bu sampledan çekilen her bir $x^{t}$ örneğin, bilinen bir olasılık dağılımına ait olduğunu varsayıyoruz. Bu olasılık dağılımını da $p\left(x  |  \theta \right)$ gösteriyoruz. 
+Elimizde birbirinden bağımsız ve aynı şekilde dağıtılmış olan bir sample var. Bu sample'ı $X = \{ x^{t} \}_{i=1}^{N}$ şeklinde gösterebiliriz. Bu sampledan çekilen her bir $x^{t}$ örneğin, bilinen bir olasılık dağılımına ait olduğunu varsayıyoruz. Bu olasılık dağılımını da $p\left(x  \mid \theta \right)$ gösteriyoruz. 
 
 $$
 x^{t} \sim p(x|\theta)
 $$
 
-Bizim buradaki amacımız bize en yüksek olasılığı $p\left(x | \theta \right)$ verecek olan $\theta$ değerini bulmak.  Bütün örnekler $x^{t}$ birbirinden bağımsız olduğundan parametre $\theta$ nın olasılık fonksiyonu bütün verilen sampleların olasılıklarının çarpımına eşittir. 
+Bizim buradaki amacımız bize en yüksek olasılığı $p\left(x \mid \theta \right)$ verecek olan $\theta$ değerini bulmak.  Bütün örnekler $x^{t}$ birbirinden bağımsız olduğundan parametre $\theta$ nın olasılık fonksiyonu bütün verilen sampleların olasılıklarının çarpımına eşittir. 
 
 $$
 l(\theta | X) = p(X|\theta) = \prod_{t=1}^{N}p(x^{i}|\theta)
