@@ -39,7 +39,7 @@ $$
 N(\mu , \sigma^{2}) = p(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x - \mu)^2}{2\sigma^{2}}}
 $$
 
-O zaman verilen sampleın $X = \{ x^t\}_{t=1}^{N}$ log likelihood değeri de şu şekilde olur.
+O zaman verilen sampleın $X = \{ x^t \}_{t=1}^{N}$ log likelihood değeri de şu şekilde olur.
 
 
 $$
