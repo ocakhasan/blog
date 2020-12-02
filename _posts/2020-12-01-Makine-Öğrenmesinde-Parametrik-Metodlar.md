@@ -11,13 +11,13 @@ preview: İstatiksel biçimde parametrik metodları inceliyoruz.
 
 ### Maximum Likelihood Estimation (Maksimum Olasılık Tahmini)
 
-Elimizde birbirinden bağımsız ve aynı şekilde dağıtılmış olan bir sample var. Bu sample'ı $X = \{ x^{t}\}_{i=1}^{N}$ şeklinde gösterebiliriz. Bu sampledan çekilen her bir $x^{t}$ örneğin, bilinen bir olasılık dağılımına ait olduğunu varsayıyoruz. Bu olasılık dağılımını da $p\left(x | \theta\right)$ gösteriyoruz. 
+Elimizde birbirinden bağımsız ve aynı şekilde dağıtılmış olan bir sample var. Bu sample'ı $X = \{ x^{t} \}_{i=1}^{N}$ şeklinde gösterebiliriz. Bu sampledan çekilen her bir $x^{t}$ örneğin, bilinen bir olasılık dağılımına ait olduğunu varsayıyoruz. Bu olasılık dağılımını da $p\left(x | \theta \right)$ gösteriyoruz. 
 
 $$
 x^{t} \sim p(x|\theta)
 $$
 
-Bizim buradaki amacımız bize en yüksek olasılığı $p\left(x | \theta\right)$ verecek olan $\theta$ değerini bulmak.  Bütün örnekler $x^{t}$ birbirinden bağımsız olduğundan parametre $\theta$ nın olasılık fonksiyonu bütün verilen sampleların olasılıklarının çarpımına eşittir. 
+Bizim buradaki amacımız bize en yüksek olasılığı $p\left(x | \theta \right)$ verecek olan $\theta$ değerini bulmak.  Bütün örnekler $x^{t}$ birbirinden bağımsız olduğundan parametre $\theta$ nın olasılık fonksiyonu bütün verilen sampleların olasılıklarının çarpımına eşittir. 
 
 $$
 l(\theta | X) = p(X|\theta) = \prod_{t=1}^{N}p(x^{i}|\theta)
