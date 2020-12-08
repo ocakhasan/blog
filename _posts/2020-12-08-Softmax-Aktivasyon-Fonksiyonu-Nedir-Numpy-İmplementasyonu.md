@@ -9,10 +9,10 @@ Softmax fonksiyonu modelden çıkan sonuçların olasılıksal şekilde ifade ed
 
 Softmax fonksiyonu input olarak $K$ boyutlu uzaydan vektör $z$ alır. Bu vektörü $K$ olasılık değerlerinden oluşan bir olasılık dağılımına çevirir. Bu olasılıkların her biri exponentialları ile doğru orantılıdır. Softmax fonksiyonu uygulamadan önce bu $z$ vektöründeki bazı değerler negatif de olabilir 0 da olabilir, pozitif de olabilir. Softmax fonksiyonunu uyguladıktan sonra ise bütün değerler $(0, 1)$ aralığında değer alır ve bütün değerlerin toplamı 1 olur. 
 
-Standart softmax function tanımı şu şekildedir. $\sigma : \R^{K} \rightarrow \R^{K}$ 
+Standart softmax function tanımı şu şekildedir. $\sigma : \mathbb{R^{K}} \rightarrow  \mathbb{R^K}$ 
 
 $$
-\sigma(z)_{i} = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}} her \hspace{1mm} i = 1, 2, 3,  K ve  \hspace{1mm} z = (z_1, z_2, .., z_k) \in \R^K
+\sigma(z)_{i} = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}} her \hspace{1mm} i = 1, 2, 3, ...,  K ve  \hspace{1mm} z = (z_1, z_2, ... , z_k) \in \R^K
 $$
 
 Bir diğer deyişle bizim yaptığımız işlem her bir değerin exponential fonksiyonunu almak ve bunu toplama bölmek. Böylece normalize etmiş oluyoruz ve bütün değerleri topladığımız zaman sonuç 1 ediyor. 
