@@ -17,7 +17,7 @@ $$
 
 Bir diğer deyişle bizim yaptığımız işlem her bir değerin exponential fonksiyonunu almak ve bunu toplama bölmek. Böylece normalize etmiş oluyoruz ve bütün değerleri topladığımız zaman sonuç 1 ediyor. 
 
-Örnek olarak vektör $k = [1, 1, 1] \in \R^3$ olsun. O zaman,
+Örnek olarak vektör $k = [1, 1, 1] \in \mathbb{R^3}$ olsun. O zaman,
 
 $$
 \sigma(k) = [\frac{1}{3}, \frac{1}{3}, \frac{1}{3}]
