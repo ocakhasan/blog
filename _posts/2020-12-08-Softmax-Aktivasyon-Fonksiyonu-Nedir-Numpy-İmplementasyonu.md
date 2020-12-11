@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Softmax Aktivasyon Fonksiyonu Nedir ve Numpy ile Nasıl İmplement Edilir 
+title: Softmax Aktivasyon Fonksiyonu Nedir ve Numpy ile Nasıl Implement Edilir 
 preview: Derin Öğrenmede kullanılan softmax aktivasyon fonksiyonunu inceliyoruz.
 ---
 

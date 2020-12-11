@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Makine Öğrenmesinde Parametrik Metodlar  
+title: Makine Ogrenmesinde Parametrik Metodlar  
 preview: İstatiksel biçimde parametrik metodları inceliyoruz.
 ---
 
