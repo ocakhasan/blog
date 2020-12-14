@@ -115,7 +115,7 @@ Yeşil renkli *bir* kelimesi burada bizim merkezi kelimemizdir. Her seferinde bi
 
 
 $$
-J_{t,j}(\theta) = -\log P(top \mid bir) = -log \frac{exp u^{T}_{top} v_{bir}}{\sum_{w \ in V} exp u^{T}_{w} v_{bir}} = -u_{top}^T v_{bir} + log \sum_{w \in W} exp u^{T}_{w} v_{bir}
+J_{t,j}(\theta) = -\log P(top \mid bir) = -log \frac{exp(u^{T}_{top} v_{bir})}{\sum_{w \ in V} exp(u^{T}_{w} v_{bir})} = -u_{top}^T v_{bir} + log \sum_{w \in W} exp(u^{T}_{w} v_{bir})
 $$ 
 
 
