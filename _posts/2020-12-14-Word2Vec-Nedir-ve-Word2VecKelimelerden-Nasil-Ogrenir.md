@@ -77,13 +77,46 @@ Verilen her kelime $w$ için, iki adet vektörümüz var.
 
 Vektörler train edildikten sonra, genel olarak içerik vektörlerini $u_w$ atar ve sadece merkezi kelime vektörlerini $v_w$ kullanılır.
 
-Bundan sonra verilen `merkezi kelime` $c$ ve `içerik kelimesi` $o$ kelimeleri için olasılık: 
+Bundan sonra verilen **merkezi kelime** $c$ ve **içerik kelimesi** $o$ kelimeleri için olasılık: 
 
 $$
 P(o \mid c) = \frac{exp(u_{o}^{T})}{\sum_{v \in V} exp(u_{w}^{T} v_c)}
 $$
 
 **NOT:** Bu bir `softmax fonksiyonudur. ` Softmax ile alakalı yazıma [bu yazımdan](https://ocakhasan.github.io/blog/Softmax-Aktivasyon-Fonksiyonu-Nedir-Numpy-Implementasyonu/) ulaşabilirsiniz.
+
+
+Şimdi bu olasılıkları nasıl hesaplayacağımız gördüğümüze göre, vektörleri nasıl eğiteceğimizi görelim.
+
+### NASIL EĞİTİLİR
+
+Kısaca bu sorunun cevabı *Gradient Descent* ile her seferinde bir kelime alarak gerçekleşir. 
+
+Parametrelerimiz $\theta$ bütün kelimelerin $v_w$ ve $u_w$ vektörleri olduğunu hatırlayalım. Bu vektörleri gradient descent kullanarak optimize edeceğiz. 
+
+$$
+\theta^{new} = \theta^{old} - \alpha \nabla_{\theta} J(\theta)
+$$
+
+Bu parametre güncellemerini her seferinde bir kelime kullanarak yapıyoruz. Her bir güncelleme bir merkez kelime ve içerik kelimesi ikilileriyle yapılır. Tekrardan kayıp fonksiyonuna bakalım.
+
+
+$$
+J(\theta) = -\frac{1}{T} \log L(\theta) = -\frac{1}{T} \sum_{t=1}^{T} \sum_{-m \leq j \leq m, j \neq 0 } \log P(w_{t + j} \mid w_t, \theta)
+$$
+
+Merkezi kelime $w_t$ için, kayıp fonksiyonu ayrı bir terimi her bir içerik kelimesi $w_{t + j}$ (sliding window içerisindeki)  $J_{t,j}(\theta) = -\log P(w_{t + j} \mid w_t, \theta)$ 
+
+Bir örnek vererek bu durumu daha iyi anlayalım. Şu cümleyi ele alalım. 
+
+Bugün bahçede <span style="color: green">bir</span> top gördüm. 
+
+Yeşil renkli *bir* kelimesi burada bizim merkezi kelimemizdir. Her seferinde bir kelimeye bakacağımız için, bir tane içerik kelimesi seçeceğiz. Örnek olarak *top* kelimesini ele alalım. Bundan sonra bu iki kelime için kayıp fonksiyonu
+
+
+$$
+J_{t,j}(\theta) = -\log P(top \mid bir) = -log \frac{exp u^{T}_{top} v_{bir}}{\sum_{w \ in V} exp u^{T}_{w} v_{bir}} = -u_{top}^T v_{bir} + log \sum_{w \in W} exp u^{T}_{w} v_{bir}
+$$ 
 
 
 
