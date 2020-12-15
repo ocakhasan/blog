@@ -128,7 +128,7 @@ Burada hangi parameterlerin olduğuna göz atalım.
 Şuanki adımda sadece bu parametreler güncellenecek. 
 
 $$
-v_{bir} := {v_bir}  - \alpha \frac{\partial J_{t, j}(\theta)}{\partial v_{bir}}
+v_{bir} := v_{bir}  - \alpha \frac{\partial J_{t, j}(\theta)}{\partial v_{bir}}
 $$
 
 $$
