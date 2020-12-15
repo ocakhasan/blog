@@ -135,7 +135,7 @@ $$
 u_w = u_w - \alpha \frac{\partial J_{t, j}(\theta)}{\partial u_{w}} \forall w \in V
 $$
 
-Kayıp fonksiyonunu azaltacak şekilde yaptığımız her bir güncelleme, parametreler arasındaki benzerliği ($v_{bir} ve u_{top} dot product'ını$) artırıyor ve aynı zamanda diğer her bir diğer $u_w$ ile $v_{bir}$ arasındaki benzerliği de azaltıyor. 
+Kayıp fonksiyonunu azaltacak şekilde yaptığımız her bir güncelleme, parametreler arasındaki benzerliği $v_{bir} \hspace{1mm} ve \hspace{1mm}  u_{top}$ dot product'ını artırıyor ve aynı zamanda diğer her bir diğer $u_w$ ile $v_{bir}$ arasındaki benzerliği de azaltıyor. 
 
 Bu biraz garip gelebilir ancak neden *bir* kelimesinin *top* kelimesinden hariç diğer kelimelerle benzerliğini azaltmaya çalışıyoruz. Diğerleri de mantıklı, içerik verecek kelimeler olabilir. Ancak bu bir sorun değil! Biz bu güncellemeyi her kelime için tek tek yaptığımızdan dolayı, yani her kelime bir kez merkezi kelime olacak,  vektörler üzerindeki bütün güncellemelerin ortalaması metin içeriğininin dağılımını öğrenecektir. 
 
