@@ -115,8 +115,33 @@ Yeşil renkli *bir* kelimesi burada bizim merkezi kelimemizdir. Her seferinde bi
 
 
 $$
-J_{t,j}(\theta) = -\log P(top \mid bir) = -log \frac{exp(u^{T}_{top} v_{bir})}{\sum_{w \ in V} exp(u^{T}_{w} v_{bir})} = -u_{top}^T v_{bir} + log \sum_{w \in W} exp(u^{T}_{w} v_{bir})
+J_{t,j}(\theta) = -\log P(top \mid bir) = -log \frac{exp(u^{T}_{top} v_{bir})}{\sum_{w \ in V} exp(u^{T}_{w} v_{bir})} = -u_{top}^T v_{bir} + log \sum_{w \in V} exp(u^{T}_{w} v_{bir})
 $$ 
 
+Buradaki $V$ kümesi sliding windowu kapsayan kelimelerden oluşur. Loss (kayıp) fonksiyonumuzu aldığıma göre, şimdi vektörler üzerinde güncelleme yapalım. 
 
 
+Burada hangi parameterlerin olduğuna göz atalım.
+* merkezi kelime vektörlerinden sadece $v_{bir}$
+* içerik kelime vektörlerinden ise sliding window içerisindeki bütün kelimeler $u_w \forall w \in V$
+
+Şuanki adımda sadece bu parametreler güncellenecek. 
+
+$$
+v_{bir} := {v_bir}  - \alpha \frac{\partial J_{t, j}(\theta)}{\partial v_{bir}}
+$$
+
+$$
+u_w = u_w - \alpha \frac{\partial J_{t, j}(\theta)}{\partial u_{w}} \forall w \in V
+$$
+
+Kayıp fonksiyonunu azaltacak şekilde yaptığımız her bir güncelleme, parametreler arasındaki benzerliği ($v_{bir} ve u_{top} dot product'ını$) artırıyor ve aynı zamanda diğer her bir diğer $u_w$ ile $v_{bir}$ arasındaki benzerliği de azaltıyor. 
+
+Bu biraz garip gelebilir ancak neden *bir* kelimesinin *top* kelimesinden hariç diğer kelimelerle benzerliğini azaltmaya çalışıyoruz. Diğerleri de mantıklı, içerik verecek kelimeler olabilir. Ancak bu bir sorun değil! Biz bu güncellemeyi her kelime için tek tek yaptığımızdan dolayı, yani her kelime bir kez merkezi kelime olacak,  vektörler üzerindeki bütün güncellemelerin ortalaması metin içeriğininin dağılımını öğrenecektir. 
+
+Bu yazıda partial derivative kısımlarına girilmemiştir. Ancak ben genel olarak **Word2Vec** modelinin nasıl çalıştığını anlatabildiğimi düşünüyorum. Eğer denemek isterseniz partial derivative kısımlarını kendiniz deneyebilirsiniz. Diğer yazılarda görüşmek üzere. 
+
+Eğer yazıyı beğendiyseniz paylaşmayı unutmayın ki diğer insanlar da yararlansın. 
+
+### REFERENCES
+* https://lena-voita.github.io/nlp_course/word_embeddings.html
