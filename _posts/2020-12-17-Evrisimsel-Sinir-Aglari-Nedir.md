@@ -45,7 +45,7 @@ Bu 3 katmandan oluşan katmanları birleştirip bir sinir ağı oluşturacağız
 
 Convolutional katman Convolutional sinir ağlarının büyük ağır işini yapan katmanlardır. 
 
-Conv katmanlar parametreleri öğrenilebilir filtrelerden oluşur. Her bir filtre boyut olarak küçüktür, ancak input derinliği boyunca uzanırlar. Örnek olarak, tipik bir filtre $5 * 5 * 3$ boyutlarında olabilir. İlk 5 genişlik, ikinci 5 yükseklik ve üçüncü 3 ise resimin 3 derinlikli olmasından kaynaklanır. Doğrudan iletme kısmında, her bir filtreyi input resmi üzerinde kaydırıyoruz, bu kaydırma sırasında resimlerde pixeller ile filtredeki sayılar ile dot product alıyoruz. Filtreyi kaydırma işlemi sırasında 2 boyutlu bir aktitive haritası oluşturuyoruz. Bu harita ise bize her bir pozisyondaki cevabı veriyor. Sinir ağı, bu filtreler ne zaman belirli bir görsel özellik, örnek olarak kenar, gördüğü zaman öğrenecek. Her bir filtrenin oluşturduğu haritaları üst üste sıkıştırıp bunu bir sonraki katmana iletiyoruz. 
+Conv katmanlar parametreleri öğrenilebilir filtrelerden oluşur. Her bir filtre boyut olarak küçüktür, ancak input derinliği boyunca uzanırlar. Örnek olarak, tipik bir filtre $5 * 5 * 3$ boyutlarında olabilir. İlk 5 genişlik, ikinci 5 yükseklik ve üçüncü 3 ise resimin 3 derinlikli olmasından kaynaklanır. Doğrudan iletme kısmında, her bir filtreyi input resmi üzerinde kaydırıyoruz, bu kaydırma sırasında resimlerde pixeller ile filtredeki sayılar ile dot product alıyoruz. Filtreyi kaydırma işlemi sırasında 2 boyutlu bir aktivite haritası oluşturuyoruz. Bu harita ise bize her bir pozisyondaki cevabı veriyor. Sinir ağı, bu filtreler ne zaman belirli bir görsel özellik, örnek olarak kenar, gördüğü zaman öğrenecek. Her bir filtrenin oluşturduğu haritaları üst üste sıkıştırıp bunu bir sonraki katmana iletiyoruz. 
 
 
 ![Convolutional Sinir Ağları Örnek]({{ site.baseurl }}/images/cnn.png)
@@ -75,7 +75,76 @@ $$
 
 Şimdi bu boyut tek bir nörondan çıkan sonuç. Eğer elimizde $n$ tane nöron varsa, bu katmandan çıkan sonucun boyutu $8 * 8 * n$ olacaktı. 
 
+![Convolutional Sinir Ağları Örnek]({{ site.baseurl }}/images/cnn_filter.png)
 
+Yukarıdaki örnekten de görüleceği üzere filtre boyutumuz $3 *3$, bundan dolayı resimde de (3*3) lük alanlar alıp, bu aldığımız alanla filtre arasında bir dot product işlemi uyguluyoruz. Peki resimdeki $31$ sayısına nasıl ulaştık onu inceleyelim.
+
+$$
+(1 * 1) + (0 * 2) + (1 * 3) + (0 * 4) + (1 * 5) + (1 * 6) + (1 * 7) + (0 * 8) + (1 * 9)
+$$
+
+$$
+1 + 3 + 5 + 6 + 7 + 9 = 31
+$$
+
+Özetlemek gerekirse
+* Conv layer $W_1  * H_1 * D_1$ boyutlarında input alır
+* 4 parametreye ihtiyaç duyar
+  * Filtre sayısı $K$
+  * Filtrenin boyutları $F$
+  * Stride $S$
+  * Zero padding sayısı $P$
+* $W_2 * H_2 * D_2$ boyutlarında output üretir.
+  * $W_2 = (W_1 - F + 2P)/S + 1)$
+  * $H_2 = (H_1 - F + 2P)/S + 1$
+  * $D_2 = K$
+
+Şimdi `tensorflow` ile basit bir gösterim yapıp bu boyutları daha iyi anlayalım.
+
+```python
+import tensorflow as tf
+# The inputs are 28x28 RGB images with `channels_last` and the batch
+# size is 4.
+input_shape = (4, 28, 28, 3)
+x = tf.random.normal(input_shape)
+y = tf.keras.layers.Conv2D(
+2, 3, activation='relu', input_shape=input_shape[1:])(x)
+print(y.shape)
+```
+
+```
+(4, 26 , 26, 2)
+```
+
+Burada olan işlemler şu şekildedir
+* `input_shape` Conv layer'a verilecek olan inputun boyutlarıdır. (4, 28, 28, 3) şu anlama gelmektedir. Bizim elimizde 4 adet resim var, ve bu resimlerin boyutları (28, 28, 3)tür. 
+* `Conv2D` ' e verilen parametreler ise şu şekildedir. İlk verilen parametre `2` kaç adet filtre kullanacağımızı gösterir. İkinci parametre `3` ise filtre boyutunu vermektedir. Yani filtre boyutumuz $(3, 3)$ olacaktır. 
+
+Şimdi burada oluşan outputun nasıl oluştuğuna bakalım. Yukarıda özetlediğimiz gibi her şeyi tek tek yazalım
+
+Input boyutları $W_1 * H_1 * D_1$ şeklindeydi. Bundan dolayı
+* $W_1 = 28$
+* $H_1 = 28$
+* $D_1 = 3$
+
+Daha sonra filtre sayımız $K = 2$, filtre boyutumuz ise $F = 3$, stride ise default olarak $S = 1$dir. Padding ise default olarak $P = 0$dır. 
+
+O zaman şimdi output boyutlarımızı $(W_2 * H_2 * D_2)$ hesaplayabiliriz.
+
+* $W_2 = (28 - 3 + 2 * 0) / 1 + 1  = 25 + 1 = 26$
+* $H_2 = (28 - 3 + 2 * 0) / 1 + 1 = 25 + 1 = 26$
+* $D_2 = K = 2$
+
+Her bir resim için oluşturulan output boyutları $(26, 26, 2)$. Elimizde 4 adet resim var ve bundan dolayı çıkan output boyutu $(4, 26, 26, 2)$
+
+
+Bu yazımızda konuşulacaklar bu kadar. Beğendiyseniz paylaşmayı unutmayın.
+
+### REFERENCES
+* https://anhreynolds.com/blogs/cnn.html
+* https://cs231n.github.io/convolutional-networks/
+* https://cezannec.github.io/Convolutional_Neural_Networks/
+* https://www.tensorflow.org/api_docs/python/tf/keras/layers/Conv2D
 
 
 
