@@ -137,6 +137,70 @@ O zaman şimdi output boyutlarımızı $(W_2 * H_2 * D_2)$ hesaplayabiliriz.
 
 Her bir resim için oluşturulan output boyutları $(26, 26, 2)$. Elimizde 4 adet resim var ve bundan dolayı çıkan output boyutu $(4, 26, 26, 2)$
 
+## POOLING LAYER
+
+Convolutional sinir ağlarında convolutional katmanlar arasına *Pooling* katmanları eklemek çok yaygındır. *Pooling* katmanının görevi verilen inputun boyutlarını kademeleri olarak azaltarak parametrelerin ve ağın işlem yükünün azaltımasını sağlamak. Bu şekilde aşırı uyma (overfitting) kontol altına alınmış olur. Pooling katmanı, bağımsız olarak çalışır ve her bir inputu `Max` operasyonu kullanarak boyutlarını azaltır. En yaygın *Pooling* katmanı, filtreleri $(2 * 2)$ boyutlarında olan ve inputu hem boydan ve hem enden ikiye bölenlerdir. Her bir `Max` operasyonu input olarak $(2 * 2)$ lik bir bölüm alacak ve bu 4 sayıdan en büyüğünü gönderecektir. Özetlemek gerekirse,
+
+* Pooling katmanı input olarak $W_1 * H_1 * D_1$ boyutlarını kabul eder. 
+* İki parametreye ihtiyaç duyar
+  * Boyut $F$
+  * Stride $S$
+* Boyutları $W_2 * H_2 * D_2$ olan output çıkarır. 
+  * $W_2 = (W_1 - F)/S + 1$
+  * $H_2 = (H_! - F)/S + 1$
+  * $D_2 = D1$
+
+
+
+![Convolutional Sinir Ağları Pooling Layer Örneği]({{ site.baseurl }}/images/pooling.png)
+
+Resimde de görüleceği üzere her bir $(2 * 2)$ lik bölümden en büyük sayılar alınıp yeni bir örnek elde ediliyor.
+
+Şimdi bunu Python ile kodlamaya çalışalım. 
+
+### Pooling Layer Python İle İmplementasyonu
+
+Bu layerı hem sıfırdan hem de kütüphane kullanarak kodlayabiliriz. Önce kütüphane kullanarak gösterelim. 
+
+
+```pythonx = tf.constant([[1., 2., 3.],
+                 [4., 5., 6.],
+                 [7., 8., 9.]])
+x = tf.reshape(x, [1, 3, 3, 1])
+max_pool_2d = tf.keras.layers.MaxPooling2D(pool_size=(2, 2),
+   strides=(1, 1), padding='valid')
+max_pool_2d(x)
+```
+
+Bu koddan çıkacak output ise 
+
+```
+<tf.Tensor: shape=(1, 2, 2, 1), dtype=float32, numpy=
+  array([[[[5.],
+          [6.]],
+          [[8.],
+          [9.]]]], dtype=float32)>
+```
+
+Çıkan sonucun nasıl çıktığını bence rahatlıkla yapabilirsiniz. 
+
+Şimdi kendimiz sıfırdan bu layerı basit bir şekilde implement edelim.
+
+```python
+import numpy as np
+
+def pool2d(X, pool_size, mode='max'):
+    p_h, p_w = pool_size        #pool size ı al
+    Y = torch.zeros((X.shape[0] - p_h + 1, X.shape[1] - p_w + 1)) #Outputu oluştur
+    for i in range(Y.shape[0]):
+        for j in range(Y.shape[1]):
+            Y[i, j] = X[i: i + p_h, j: j + p_w].max()   #Her bir pool size kadar pixelin max'ını al
+            
+    return Y
+```
+
+Şimdi kodumuzu yukarıda yazdığımız `x` arrayi ile test edersek, yine aynı sonucun çıkacağını göreceğiz. 
+
 
 Bu yazımızda konuşulacaklar bu kadar. Beğendiyseniz paylaşmayı unutmayın.
 
@@ -145,6 +209,8 @@ Bu yazımızda konuşulacaklar bu kadar. Beğendiyseniz paylaşmayı unutmayın.
 * https://cs231n.github.io/convolutional-networks/
 * https://cezannec.github.io/Convolutional_Neural_Networks/
 * https://www.tensorflow.org/api_docs/python/tf/keras/layers/Conv2D
+* https://www.tensorflow.org/api_docs/python/tf/keras/layers/MaxPool2D
+* https://medium.com/ai-in-plain-english/pooling-layer-beginner-to-intermediate-fa0dbdce80eb
 
 
 
