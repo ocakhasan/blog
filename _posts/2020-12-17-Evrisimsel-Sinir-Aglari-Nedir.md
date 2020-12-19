@@ -163,7 +163,8 @@ Resimde de görüleceği üzere her bir $(2 * 2)$ lik bölümden en büyük say�
 Bu layerı hem sıfırdan hem de kütüphane kullanarak kodlayabiliriz. Önce kütüphane kullanarak gösterelim. 
 
 
-```pythonx = tf.constant([[1., 2., 3.],
+```python
+x = tf.constant([[1., 2., 3.],
                  [4., 5., 6.],
                  [7., 8., 9.]])
 x = tf.reshape(x, [1, 3, 3, 1])
