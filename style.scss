@@ -21,9 +21,14 @@ html {
 body {
 	background: $white;
   font-family: 'Roboto', sans-serif;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.4;
   color: $darkGray;
+
+
+  @include mobile{
+    font-size: 16px;
+  }
 }
 .img-count{
   display:flex;
