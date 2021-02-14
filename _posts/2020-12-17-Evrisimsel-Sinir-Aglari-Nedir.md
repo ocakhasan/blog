@@ -112,7 +112,7 @@ y = tf.keras.layers.Conv2D(
 print(y.shape)
 ```
 
-```
+```python
 (4, 26 , 26, 2)
 ```
 
@@ -175,7 +175,7 @@ max_pool_2d(x)
 
 Bu koddan çıkacak output ise 
 
-```
+```python
 <tf.Tensor: shape=(1, 2, 2, 1), dtype=float32, numpy=
   array([[[[5.],
           [6.]],

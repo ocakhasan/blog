@@ -50,7 +50,7 @@ exponential_arr = np.exp(arr)
 print("Array:   {} \nExponential Array: {} \n".format(arr, exponential_arr))
 ```
 
-```
+```python
 Array: [1 2 3] 
 Exponential Array : [ 2.71828183  7.3890561  20.08553692] 
 ```
@@ -62,7 +62,7 @@ sum_of_exponentials = np.sum(exponential_arr)
 print("Exponential Array Toplamı: ", sum_of_exponentials)
 ```
 
-```
+```python
 Exponential Array Toplamı:   30.19287485057736
 ```
 
@@ -83,13 +83,13 @@ softmax_array = softmax(arr)
 print("Array: {} \nSoftmax Array: {}".format(arr, softmax_array))
 ```
 
-```
+```python
 Array: [1 1 1] 
 Softmax Array: [0.33333333 0.33333333 0.33333333]
 ```
 
 Gördüğümüz üzere softmax fonksiyondan çıkan arrayin toplamı 1 e eşit oluyor
-```
+```python
 np.sum(softmax_array) #Sonuç 1 çıkıyor. 
 ```
 

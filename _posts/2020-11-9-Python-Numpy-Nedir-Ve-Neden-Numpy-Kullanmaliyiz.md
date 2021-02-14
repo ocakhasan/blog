@@ -22,7 +22,7 @@ a = np.array([1, 2, 3, 4])
 type(a)
 ```
 
-```
+```python
 numpy.ndarray
 ```
 
@@ -36,7 +36,7 @@ print("Birinci eleman {}".format(a[0]))
 print("Birinci elemanın birinci elemanı {}".format(a[0][0]))
 ```
 
-```
+```python
 Birinci eleman [1 2 3]
 Birinci elemanın birinci elemanı 1
 ```
@@ -61,7 +61,7 @@ print("Arrayin ranki {}".format(a.ndim))
 print("Arraydeki eleman sayısı {}".format(a.size))
 print("Arrayin veri tipi {}".format(a.dtype))
 ```
-```
+```python
 Arrayin boyutları (3, 3)
 Arrayin ranki 2
 Arraydeki eleman sayısı 9
@@ -79,7 +79,7 @@ zeros = np.zeros(shape)
 zeros
 ```
 
-```
+```python
 array([[0., 0.],
         [0., 0.]])
 ```
@@ -94,7 +94,7 @@ ones = np.ones(shape)
 ones
 ```
 
-```
+```python
 array([[1., 1.],
     [1., 1.]])
 ```
@@ -110,7 +110,7 @@ a = np.full((6,5), 29)
 print(a)
 ```
 
-```
+```python
 [[29 29 29 29 29]
 [29 29 29 29 29]
 [29 29 29 29 29]
@@ -126,7 +126,7 @@ print(a)
 np.eye(3)
 ```
 
-```
+```python
 array([[1., 0., 0.],
         [0., 1., 0.],
         [0., 0., 1.]])
@@ -140,7 +140,7 @@ rangearray = np.arange(10,100,10, dtype=float)
 rangearray
 ```
 
-```
+```python
 array([10., 20., 30., 40., 50., 60., 70., 80., 90.])
 ```
 
@@ -154,7 +154,7 @@ linarray
 ```
 
 
-```
+```python
 array([ 10. ,  32.5,  55. ,  77.5, 100. ])
 ```
 
@@ -171,7 +171,7 @@ new_array = np.reshape(array, (4,5))
 print("Sonraki hali : \n", new_array)
 ```
 
-```
+```python
 Önceki hali : 
     [ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19]
 Sonraki hali : 
@@ -202,7 +202,7 @@ a1[0]
 ```
 
 
-```
+```python
 1
 ```
 
@@ -212,7 +212,7 @@ a1[0]
 a1[4]
 ```
 
-```
+```python
     2
 ```
 
@@ -220,7 +220,7 @@ a1[4]
 a1[-1]
 ```
 
-```
+```python
 10
 ```
 
@@ -229,7 +229,7 @@ a1[-1]
 a1[-3]
 ```
 
-```
+```python
 5
 ```
 
@@ -249,7 +249,7 @@ a2[0]
 ```
 
 
-```
+```python
 array([3, 4, 5, 6])
 ```
 
@@ -258,7 +258,7 @@ a2[0, 0]
 ```
 
 
-```
+```python
 3
 ```
 
@@ -269,7 +269,7 @@ a2[0, 0]
 ```python
 a2[2, -1]  # 2.indexin son elemanı
 ```
-```
+```python
 10
 ```
 
@@ -278,7 +278,7 @@ a2[2, 0] = 100 # 2.elemanın 0.elemanını 100 yap
 a2
 ```
 
-```
+```python
 array([[  3,   4,   5,   6],
         [  1,   3,   7,   2],
         [100,   4,   5,  10],
@@ -292,7 +292,7 @@ a2[[0, 0, 2, 1]] # 0.index, 0.index, 2.index, 1.index
 ```
 
 
-```
+```python
 array([[  3,   4,   5,   6],
         [  3,   4,   5,   6],
         [100,   4,   5,  10],
@@ -309,7 +309,7 @@ a2[:2, ::2] # 2.satıra kadar 0 ile 2. indexler
 ```
 
 
-```
+```python
 array([[3, 5],
         [1, 7]])
 ```
@@ -318,7 +318,7 @@ array([[3, 5],
 a2[::-1, ::-1] # Arrayi ters çevir
 ```
 
-```
+```python
 array([[126, 125, 124,  12],
         [ 10,   5,   4, 100],
         [  2,   7,   3,   1],
@@ -331,7 +331,7 @@ a2[:, 0] # İlk sutün
 ```
 
 
-```
+```python
 array([  3,   1, 100,  12])
 ```
 
@@ -339,7 +339,7 @@ array([  3,   1, 100,  12])
 a2[0, :] # İlk satır
 ```
 
-```
+```python
 array([3, 4, 5, 6])
 ```
 

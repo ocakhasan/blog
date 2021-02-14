@@ -69,7 +69,7 @@ K[i][j] = max(K[i])[j], v[i] + K[i-1][j - w[i]])
 
 Eğer bir basit bir kod yazmak istersek 
 
-```
+```python
 for j in range(W+1)
     K[0][j] = 0             //Yani İlk satırı 0 yap
 
