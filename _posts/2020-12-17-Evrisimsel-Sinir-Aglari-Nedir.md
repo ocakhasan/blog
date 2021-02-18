@@ -6,6 +6,11 @@ preview: Derin Öğrenmede resimler üzerinde kullanılan evrişimsel sinir ağl
 
 Yazıya başlamadan önce belirmek isterim ki, bu tarz derin öğrenme terimlerinin İngilizce ile kullanılması taraftarıyım. Teknik terimlerin Türkçe karşılıkları genelde her zaman duymadığımız kelimeler oluyor ve internette Türkçe pek kaynak yok. Ondan dolayı ben bu terimlerin İngilizce öğrenilip, İngilizce kullanılması taraftarıyım. Herkes global olmaya çalışırken, bizim öyle davranmamamız için hiçbir sebep yok. 
 
+**İçerik**
+* TOC
+{:toc}
+
+## TANIM
 Convolutional sinir ağları genel olarak sıradan sinir ağlarına çok benzerdir. Bu sinir ağları da öğrenebilir ağırlık (weight) ve önyargısı (bias) olan sinirlerden (neuron) oluşur. Her bir nöron bazı inputlar alır, dot product uygular ve bu işlemi lineer olmayan bir yolla devam ettirir. Bütün network hala tek bir ayırt edilebilir skoru açıklar. Network resim pixellerini alıp, sonda bir tahmin üretir. Networkun sonunda belirli  bir kayıp fonksiyonu (loss function) bulunur. 
 
 Peki bu convolutional sinir ağları normal sinir ağlarına bu kadar benziyorsa ne değişiyor? Bu sorunun cevabı ise şu şekildedir: 
@@ -13,7 +18,7 @@ Peki bu convolutional sinir ağları normal sinir ağlarına bu kadar benziyorsa
 Convolutional sinir ağları inputun resimlerden oluştuğunu varsayar, bu varsayım bize bazı özellikleri sisteme entegre etmemize yardımcı olur. 
 
 
-### YAPISAL GÖZLEM
+## YAPISAL GÖZLEM
 
 **Normal Sinir Ağları:** Normal sinir ağları tek bir input alır, onu bazı gizli katmanlardan (hidden layer) geçirir. Her bir hidden layer nöron kümelerinden oluşur,  her bir nöron, bir önceki katmandaki bütün nöronlarla bağlantılıdır ve diğer nöronlardan bağımsız şekilde çalışır. Son katman ise sonuç katmanı (output layer) olarak adlandırılır ve bu katmanda her bir sınıfın olasılığı belli olur. 
 
@@ -30,7 +35,7 @@ Convolutional sinir ağları ise inputun resimlerden oluşmasınından faydalan�
 olacaktır. 
 
 
-### PEKI BU CONVOLUTIONAL SINIR AĞLARI NASIL OLUŞTURULUYOR? 
+## PEKI BU CONVOLUTIONAL SINIR AĞLARI NASIL OLUŞTURULUYOR? 
 
 Bu sinir ağları katman dizilerinden oluşur ve bu katmanlar ise şu şekildedir. 
 
@@ -98,6 +103,8 @@ $$
   * $W_2 = (W_1 - F + 2P)/S + 1)$
   * $H_2 = (H_1 - F + 2P)/S + 1$
   * $D_2 = K$
+
+### PYTHON İLE UFAK BİR GÖSTERİM
 
 Şimdi `tensorflow` ile basit bir gösterim yapıp bu boyutları daha iyi anlayalım.
 
@@ -205,7 +212,7 @@ def pool2d(X, pool_size, mode='max'):
 
 Bu yazımızda konuşulacaklar bu kadar. Beğendiyseniz paylaşmayı unutmayın.
 
-### REFERENCES
+## REFERENCES
 * https://anhreynolds.com/blogs/cnn.html
 * https://cs231n.github.io/convolutional-networks/
 * https://cezannec.github.io/Convolutional_Neural_Networks/

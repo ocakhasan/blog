@@ -3,9 +3,14 @@ layout: post
 title: Makine Ogrenmesinde Parametrik Metodlar  
 preview: İstatiksel biçimde parametrik metodları inceliyoruz.
 ---
+**Contents**
+* TOC
+{:toc}
 
 
+## TANIM
 *İstatistik*, verilen bir örneklemden(sample) elde edilen herhangi bir değer demektir. İstatistiksel öğrenmede, verilen sampledan sağlanan bilgi ile karar verilir. İlk yaklaşımımız, sample'ın belirli bir dağılımdan (distribution) geldiğini farz ederek yapmak olacaktır. Bu dağılıma örnek olarak *Gaussian dağılım* verilebilir. Bu durumun avantajı ise, parametre sayısının azaltılması olacaktır. Tüm parametrelerimiz ortalama değer (mean) ve varyans (variance) olacaktır. Bu parametreleri sample tarafından elde ettikten sonra, bütün dağılımı biliyor olacağız. Bu parametreleri verilen sample üzerinden öğrenip, daha sonra bu bulduğumuz ortalama ve varyans değerlerini modele entegre ederek, tahmini bir dağılım elde edeceğiz. Daha sonra bu dağılımı da karar vermek için kullanacağız. 
+
 
 Öncelikle olasılık kavramı diğer ismiyle density estimation (yoğunluk tahmini) anlamına gelen $p\left(x\right)$ kavramı ile başlıyoruz. Bu kavramı, Naive Bayesde de olduğu gibi tahmini olasılıkların $p(x \mid C_{i})$, ve prior olasılık olan $P\left(C_{i}\right)$ olduğu ve bu olasılıkların daha sonra asıl amaç olan $P\left(C_{i} \mid x\right)$'i tahmin ederek sınıflandırma işlemi yapılması için kullanıyoruz. Peki bu parametreleri nasıl öğreneceğiz. Maksimum Likelihood Estimation kullanarak yapacağız. 
 

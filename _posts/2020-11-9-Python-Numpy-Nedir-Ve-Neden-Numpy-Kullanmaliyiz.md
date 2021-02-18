@@ -10,6 +10,10 @@ preview: Bu yazıda Python Numpy Kütüphanesini inceliyoruz.
 import numpy as np
 ```
 
+**İçerik**
+* TOC
+{:toc}
+
 ## NUMPY ARRAY
 
 Python'daki listelere çok benzerdir. Numoy arrayleri sadece aynı veri türüne sahip listeleri barındırabilir. Arrayler daha az hafızada yer kaplar.

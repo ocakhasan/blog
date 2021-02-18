@@ -8,7 +8,7 @@ Merhaba bu yazımızda Makine Öğrenmesinde meşhur bir algoritma olan Knn algo
 hazır bir sürü kütüphane var ancak sıfırdan algoritmayı yazabilmek bize algoritmanın nasıl çalışacağını gösterecektir. 
 Böylece Knn algoritması bir tahmin yaparken nasıl yapıyor olayın arkasında neler dönüyor bunları anlayabiliyor olacağız. 
 
-**Contents**
+**İçerik**
 * TOC
 {:toc}
 

@@ -4,9 +4,14 @@ title: Word2Vec Nedir ve Word2Vec Kelimelerden Nasıl Öğrenir
 preview: Natural Language Processing'de kullanılan Word2Vec modelini inceliyoruz.
 ---
 
+**İçerik**
+* TOC
+{:toc}
+
+
 Makine öğrenmesinde modellerin veriyi görme şekli biz insanlardan farklıdır. Biz kolayca ***Kırmızı arabayı görüyorum.*** cümlesini anlayabilirken, model bu kelimeleri anlayacak vektörlere ihtiyaç duyar. Bu vektörlere `word embeddings` denir. 
 
-### WORD VECTORLERİ NASIL ÇALIŞIR - Tablodan Bak
+## WORD VECTORLERİ NASIL ÇALIŞIR - Tablodan Bak
 
 Her kelimemiz için belirli bir boyutta vektörümüz olacak ve bu vektörleri kelimeyi isteyerek alabiliriz.
 
@@ -143,5 +148,5 @@ Bu yazıda partial derivative kısımlarına girilmemiştir. Ancak ben genel ola
 
 Eğer yazıyı beğendiyseniz paylaşmayı unutmayın ki diğer insanlar da yararlansın. 
 
-### REFERENCES
+## REFERENCES
 * https://lena-voita.github.io/nlp_course/word_embeddings.html

@@ -4,7 +4,17 @@ title: Dinamik Programlama ile Knapsack Problemi Nasıl Çözülür
 preview: Meşhur Knapscak problemini dinamik programlama ile çözüyoruz. 
 ---
 
+**Contents**
+* TOC
+{:toc}
+
+
+## Problem Tanımı
+
 **Knapsack problemi** bilgisayar biliminde çok meşhur bir problemdir. Bu problemdeki amaç verilen ağırlık ve değerlerle en fazla değer toplayacak şekilde verilen ağırlık limitini aşmadan hangi itemlerin seçileceğidir. 
+
+
+
 
 Knapscak problemi bir yüzyıldan fazla bir süredir, 1897 e kadar çalışmalar vardır. İsmini matematikçi [Tobias Dantzig](https://en.wikipedia.org/wiki/Tobias_Dantzig) adlı matematikçinin eski çalışmalarından alır. 
 
@@ -21,6 +31,8 @@ Buradaki problemimiz için birden fazla yöntem vardır. Biz dinamik programlama
 * Maksimum değer
 * Hangi paketlerin alındığı
 
+
+### İMPLEMENTASYON
 Bu problemi analiz ederken algoritmanın hangi değerlere bağlı olacağını bulmaktır. Buradaki algoritmamız 2 ayrı değişkene dayanır. Bunların birincisi kaç tane paket taşıyacağımız ve elimizde kalan ağırlık limiti.
 
 Evet algoritmamızı iki değişkene bağlı şekilde yazacağız. Örnek olarak ilk 3 elemanı alarak, j maksimum limitli bir prpblemde optimum değer kaçtır. Buradaki ilk 3 eleman, hangi elemanları seçeceğimiz değişkenine örnektir. `J` limit ise ne kadar ağırlık limitimizin olduğudur. 

@@ -2,8 +2,14 @@
 layout: post
 title: Softmax Aktivasyon Fonksiyonu Nedir ve Numpy ile Nasıl Implement Edilir 
 preview: Derin Öğrenmede kullanılan softmax aktivasyon fonksiyonunu inceliyoruz.
+
 ---
 
+**İçerik**
+* TOC
+{:toc}
+
+## TANIM
 
 Softmax fonksiyonu modelden çıkan sonuçların olasılıksal şekilde ifade edilmesi için kullanılan bir fonksiyondur. Genellikle nöral ağlarda (neural network) ağın sonucunu sınıflara olasılık değerleri vermek için kullanılır. 
 
@@ -95,7 +101,7 @@ np.sum(softmax_array) #Sonuç 1 çıkıyor.
 
 Softmax fonksiyonu bu kadar. Bir sonraki yazıda görüşmek üzere. 
 
-### REFERENCES
+## REFERENCES
 
 [wikipedia-softmax](https://en.wikipedia.org/wiki/Softmax_function)
 
