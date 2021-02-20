@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  Pytorch AutoGrad Nedir ve Nasıl Çalışır, Basit Bir Giriş
-preview: Pytorch Autograd ile otomatik olarak nasıl türev işlemleri halledilir.
+title:  Pytorch AutoGrad Nedir ve Nasıl Çalışır
+preview: Basit şekilde Pytorch Autograd ile otomatik olarak nasıl türev işlemleri halledilir.
 ---
 
 **İçerik**
