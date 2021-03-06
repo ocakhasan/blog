@@ -271,6 +271,7 @@ Bu fonksiyonu da yazdığımıza göre şimdi Flask ile bağlayabiliriz. Ama ön
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recommend Me a Movie</title>
+    <link rel="shortcut icon" href="{{url_for('static', filename='cinema.svg')}}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -330,6 +331,9 @@ Bu fonksiyonu da yazdığımıza göre şimdi Flask ile bağlayabiliriz. Ama ön
         <h4>Could not find the movie. Please check the input, if necessary write the whole name of movie and try again.
         </h4>
         {% endif %}
+        <p>Icons made by <a href="https://www.flaticon.com/authors/smalllikeart" title="smalllikeart">smalllikeart</a>
+            from
+            <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></p>
 
     </div>
 
