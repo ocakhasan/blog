@@ -141,19 +141,6 @@ def get_recommendations(movie_title, cosine_similarity, titles, df):
 
 Örnek olarak `get_recommendations("avatar", cosine_sim, titles, df)` çağırırsak çıkacak sonuç
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -272,6 +259,8 @@ def get_recommendations(movie_title, cosine_similarity, titles, df):
 </table>
 </div>
 
+
+### HTML Arayüz
 Bu fonksiyonu da yazdığımıza göre şimdi Flask ile bağlayabiliriz. Ama öncelikle bir arayüzümüz olması gerekiyor. Bunun için aynı klasörde `templates` diye bir klasör oluşturun ve içine `index.html` adında bir dosya oluşturun. Bu dosya bizim kullanıcıdan arayüzü almamızı sağlayacak olan `HTML` kodunu içerecek. `HTML` kısmını anlatmayacağım. Basit şekilde `Flask` bildiğinizi varsayıyorum. 
 
 ```html
@@ -362,7 +351,7 @@ Bu fonksiyonu da yazdığımıza göre şimdi Flask ile bağlayabiliriz. Ama ön
 
 </html>
 ```
-
+### Flask Endpointleri halletme
 Bu kodda dikkatinizi çekmek istediğim bir nokta var. `FORM` bir '/' yoluna **POST** request yapıyor. Bizim uygulamamızda bir endpoint olacak ve bu da giriş sayfası. Hem `GET` hem de `POST` requestler buraya atılacak. Şimdi `app.py` dosyasında bu koşulları sağlayan kodumuzu yazalım. 
 
 ```python
@@ -416,7 +405,7 @@ if __name__ == '__main__':
     app.run()
 
 ```
+Render templatede gönderdiğimiz `context` değişkeni `HTML` dosyasında parse ediliyor ve bilgiler güzel bir şekilde gösteriliyor. Dediğim gibi basit şekilde *Flask* bildiğiniz düşünüyorum.
 
 
-
-Bundan sonra yapmanız gereken işlem sadece bu dosyayı çalıştırıp kendiniz test edebilirsiniz. 
+Bundan sonra yapmanız gereken işlem sadece bu dosyayı çalıştırıp kendiniz test edebilirsiniz. Beğendiyseniz paylaşırsanız çok sevinirim. İyi öğrenmeler.
