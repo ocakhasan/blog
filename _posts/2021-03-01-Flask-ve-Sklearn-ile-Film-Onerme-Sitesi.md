@@ -8,7 +8,7 @@ preview: Metin benzerliği benzerliğini kullanarak Flask ile film önerme sites
 * TOC
 {:toc}
 
-Bu yazıdaki bütün kodlar [Bu repoda] bulunmaktadır. Eğer demo versiyonunu görmek isterseniz [http://banafilmoner.herokuapp.com/](http://banafilmoner.herokuapp.com/) sitesinden görebilirsiniz.
+Bu yazıdaki bütün kodlar [Bu repodan](https://github.com/ocakhasan/movie-recommender) bulunmaktadır. Eğer demo versiyonunu görmek isterseniz [http://banafilmoner.herokuapp.com/](http://banafilmoner.herokuapp.com/) sitesinden görebilirsiniz.
 
 ## Gereksinimler
 Bu yazımızda yapacağımız siteyi eğer kendiniz de yapmak istiyorsanız [Flask](https://flask.palletsprojects.com/en/1.1.x/) ve [Scikit-learn](https://scikit-learn.org/) kütüphanelerini yüklemeniz gerekmektedir. Bunları yüklemek için terminalden şu komutları yazabilirsiniz ya da her bir paketin dökümentasyonundan bakabilirsiniz.
