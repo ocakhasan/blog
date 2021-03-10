@@ -13,7 +13,7 @@ Bu yazıdaki bütün kodlar [Bu repodan](https://github.com/ocakhasan/movie-reco
 ## Gereksinimler
 Bu yazımızda yapacağımız siteyi eğer kendiniz de yapmak istiyorsanız [Flask](https://flask.palletsprojects.com/en/1.1.x/) ve [Scikit-learn](https://scikit-learn.org/) kütüphanelerini yüklemeniz gerekmektedir. Bunları yüklemek için terminalden şu komutları yazabilirsiniz ya da her bir paketin dökümentasyonundan bakabilirsiniz.
 
-```
+```bash
 pip install Flask 
 pip install scikit-learn
 ```
@@ -22,7 +22,7 @@ pip install scikit-learn
 Yapacağımız sitede film önerileri metin benzerliği ile olacak. Bu filmlerin açıklama metinlerini ise bir veri kümesinden alacağız. Bu veri kümesine [TMDB 5000 Movies](https://www.kaggle.com/tmdb/tmdb-movie-metadata) sayfasından ulaşabilirsiniz. Bundan dolayı önerebileceğimiz metinler sadece bu veri kümesindekiler olacaktır. Metin benzerliğini ise [kosinüs benzerliği](https://merveenoyan.medium.com/kosin%C3%BCs-benzerli%C4%9Fi-2b4a4c924f27) ile yapacağız. 
 
 ## Veri Seti ve Metin Benzerliği
-Veri setindeki `title` filmin başlığını ve `overview` ise filmi basitçe açıklayan metin. Biz `overview` sütununu kullanarak metin benzerliğini kuracağız. Bunun için önce `utils.py` diye bir dosya oluşturalım ve indirdiğimiz veri setini de projedeki dosyaya koyalım. Öncelikle kosinüs benzerliğini verecek olan bir fonksiyon yazalım.
+Veri setindeki `title` sütunu filmin başlığını ve `overview` sütunu ise filmi basitçe açıklar.Bu yazıda `overview` sütununu kullanarak metin benzerliğini kuracağız. Bunun için önce `utils.py` diye bir dosya oluşturalım ve indirdiğimiz veri setini de projedeki dosyaya koyalım. Öncelikle filmlerin açıklamalarını kullanarak kosinüs benzerliğini verecek olan bir fonksiyon yazalım.
 
 ```python
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -39,7 +39,7 @@ def get_cosine_similarities(df):
     return cosine_sim
 ```
 
-`get_cosine_similarities(df)` fonksiyonu parametere olarak `DataFrame` alır, `DataFrame`i ise dosyayı okuduktan sonra alıp daha sonra bu fonksiyona parametre olarak vereceğiz. Fonksiyonda kullanılan [`TfidfVectorizer`](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html) metinlerden bilgi çıkarmamıza yarayan bir algoritmadır. Açılımı `Term frequency (tf) -> (terim sıklığı)` ve `inverse document frequency (ters döküman sıklığı)`. Yani terimlerin her bir metinde ne kadar sıklıkla geçtiğine ve bir de bütün dökümanda ne kadar sıklıkla geçtiğine bakıp, hangi terimlerin cümleleri ayırmada önemli olduğuna karar verir. Bu bize (4803, n) boyutunda bir matrix dönderecektir. `n` ise bu algoritmanın bulduğu belirleyici kelimelerdir. Yani her bir cümle için her bir kelimenin ne kadar önemi var, bunu gösteren bir matrix. Daha sonra bu matrixi kullanarak her bir metin arasındaki benzerliği bulmak için [`linear_kernel`](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.linear_kernel.html) kullanıyoruz. Bu algoritma ise bize (4803, 4803) boyutunda bir matrix dönderecek bu da her bir metinin diğer 4038 filmle benzerliğini gösteren bir matrix olacak. 
+`get_cosine_similarities(df)` fonksiyonu parametere olarak `DataFrame` alır, `DataFrame`i ise veri setini okuduktan sonra  bu fonksiyona parametre olarak vereceğiz. Fonksiyonda kullanılan [`TfidfVectorizer`](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html) metinlerden bilgi çıkarmamıza yarayan bir algoritmadır. Açılımı **Term frequency (tf) -> (terim sıklığı)** ve **inverse document frequency (ters döküman sıklığı)dır**. Yani terimlerin her bir metinde ne kadar sıklıkla geçtiğine ve bu terimlerin bütün dökümanda ne kadar sıklıkla geçtiğine bakıp, hangi terimlerin cümleleri ayırmada önemli olduğuna karar verir. Bu bize (4803, n) boyutunda bir matrix dönderecektir. **n** ise bu algoritmanın bulduğu belirleyici kelimelerin sayısıdır. Yazdığımız fonksiyonla beraber, her bir cümle için her bir kelimenin ne kadar önemi olduğunu gösteren bir matrix elde edilecek. Daha sonra bu matrixi kullanarak her bir metin arasındaki benzerliği bulmak için [linear_kernel](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.linear_kernel.html) kullanıyoruz. Bu algoritma ise bize (4803, 4803) boyutunda her bir metnin diğer 4038 filmin metni ile benzerliğini gösteren bir matrix döndürecek. 
 Bu fonksiyondan çıkan sonuç ise şu şekildedir
 
 ```
@@ -51,26 +51,30 @@ Bu fonksiyondan çıkan sonuç ise şu şekildedir
  [0.         0.         0.         ... 0.01609091 1.         0.01171696]
  [0.         0.         0.         ... 0.00701914 0.01171696 1.        ]]
 ```
-Görüldüğü gibi bazı değerler 0 bazıları 1 (köşegendekiler), bazıları da 0 ile 1 arasında. Bu demek oluyor ki 0 olanlar arasında hiçbir benzerlik yok, 1 olanlar zaten kendileri ile ölçüldüğü için, örnek olarak 1.film ile 1.film arasındaki benzerlik 1 olacak doğal olarak, 0-1 arasındakiler ise iki film arasındaki benzerliği gösteriyor. 
+Görüldüğü gibi bazı değerler 0 bazıları 1 (köşegendekiler), bazıları da 0 ile 1 arasında. 
+Kısaca
+1. Sonucu 0 olanlar arasında hiçbir benzerlik yok,
+2. 1 olanlar zaten kendileri ile ölçüldüğü için aynı olarak çıkıyor, örnek olarak 1.film ile 1.film arasındaki benzerlik 1 olacak doğal olarak
+3. 0-1 arasındakiler ise iki film arasındaki benzerliği gösteriyor. 
 
-Ne yapabildiğimizi kısaca yazalım. 
+Ne yaptığımızı kısaca yazalım. 
 * Veri setini okuduk
 * Kosinüs benzerlik matriksini oluşturduk.
 
-Şimdi yapmamız gerekenler ise bize bu matrixi kullanıp belirli bir film için önerilen filmleri döndürebilmek. Bunun için yapmamız gerekenler
+Şimdi yapılması gerekenler ise bu matrixi kullanıp film önerileri alabilmek. Bunun için yapılması gerekenler
 1. Kosinüs matrixini kullanıp bize verilen film için önerileri döndüren bir fonksiyon yazmak
 2. Flask ile web arayüzü oluşturup, kullanıcın girdiği filme öneriler vermek
-3. Bu fonksiyonu flask ile bağlayabilmek.
+3. Bu fonksiyonu flask ile kullanabilmek.
 
 ### Film Önerme Fonksiyonu
-Bu fonksiyona geçmeden önce veriyi okuyalım, ve kosinüs matriximizi alalım. Şunu belirtmem gerekir ki, kullanıcının attığı her requestte bu veriyi okuyup kosinüs matrixini okumak saçma olur. Bundan dolayı bunu bir kez yapmak adına yazacağımız kodu `if __name__ == "__main__"` altına yazacağız.
+Bu fonksiyona geçmeden önce veriyi okuyalım, ve kosinüs matriximizi alalım. Şunu belirtmem gerekir ki, kullanıcının attığı her requestte veri setini baştan okuyup kosinüs matrixini okumak yük olur. Bundan dolayı, bunu bir kez yapmak adına,  bu işlemleri `if __name__ == "__main__"` altında yapacağız.
 
 Öncelikle bir `app.py` adında bir dosya açalım. Bu dosyada Flask applikasyonumuzun kodları olacak. Diğer `utils.py` dan fonksiyonları çağıracağız. 
 
 `app.py` dosyasına şu kodları girelim. 
 
 ```python
-from flask import Flask, render_template, request, redirect, flash, url_for
+from flask import Flask, render_template, request, redirect
 import pandas as pd
 import utils
 
@@ -88,12 +92,12 @@ if __name__== "__main__":
     app.run()
 ```
 
-Şuan `app.py` dosyasında yaptığımız işlemler.
-1. Flask uygulaması oluşturduk.
-2. Veriyi okuduk.
-3. Kosinüs benzerlik matriksini aldık.
+Şuan `app.py` dosyasında yapılan işlemler.
+1. Flask uygulaması oluşturuldu.
+2. Veri okundu.
+3. Kosinüs benzerlik matriksi oluşturuldu.
 
-Main kısmında ***titles*** diye bir değişken oluşturma sebebimiz bunu filmleri önerecek olan fonksiyonda kullanacağımızdan dolayıdır. ***titles*** değişkeni tip olarak `Series`dir. Konsola yazdırdığımız zaman şöyle bir sonuç çıkacaktır. 
+Main kısmında ***titles*** diye bir değişken oluşturulma sebebi bu değişkenin filmleri önerecek olan fonksiyonda kullanacağımızdan dolayıdır. ***Titles*** değişkeni tip olarak `Series`dir. Konsola yazdırdığımız zaman şöyle bir sonuç çıkacaktır. 
 
 ```
 lower_name
@@ -142,11 +146,11 @@ def get_recommendations(movie_title, cosine_similarity, titles, df):
 
 
 ### HTML Arayüz
-Bu fonksiyonu da yazdığımıza göre şimdi Flask ile bağlayabiliriz. Ama öncelikle bir arayüzümüz olması gerekiyor. Bunun için aynı klasörde `templates` diye bir klasör oluşturun ve içine `index.html` adında bir dosya oluşturun. Bu dosya bizim kullanıcıdan arayüzü almamızı sağlayacak olan `HTML` kodunu içerecek. `HTML` kısmını anlatmayacağım. Basit şekilde `Flask` bildiğinizi varsayıyorum. 
+Bu fonksiyon da yazıldığına göre şimdi Flask ile bağlayabiliriz. Ama öncelikle bir arayüzümüz olması gerekiyor. Bunun için aynı klasörde `templates` diye bir klasör oluşturun ve içine `index.html` adında bir dosya oluşturun. Bu dosya bizim kullanıcıdan arayüzü almamızı sağlayacak olan `HTML` kodunu içerecek. `HTML` kısmını anlatmayacağım. Basit şekilde `Flask` bildiğinizi varsayıyorum. 
 
 `index.html` dosyasına [buradaki arayüz kodunu](https://github.com/ocakhasan/movie-recommender/blob/master/templates/index.html) yapıştırın. HTML kısmı şuan çok ilgi alanımız değil, eğer arayüz nasıl görünüyor diye merak ediyorsanız, [buradan](https://banafilmoner.herokuapp.com) bakabilirsiniz.
 ### Flask Endpointleri halletme
-Bu kodda dikkatinizi çekmek istediğim bir nokta var. `FORM` bir '/' yoluna **POST** request yapıyor. Bizim uygulamamızda bir endpoint olacak ve bu da giriş sayfası. Hem `GET` hem de `POST` requestler buraya atılacak. Şimdi `app.py` dosyasında bu koşulları sağlayan kodumuzu yazalım. 
+Bu kodda dikkatinizi çekmek istediğim bir nokta var. `FORM` bir '/' yoluna *POST* request yapıyor. Flask uygulamasında '/' adresine bir *POST* request yapılacak. Ayrıca websitesinin giriş sayfası da bu adrese *GET* request yapılarak alınacak. Şimdi `app.py` dosyasında bu koşulları sağlayan kodumuzu yazalım. 
 
 ```python
 from flask import Flask, render_template, request, redirect, flash, url_for
@@ -199,7 +203,6 @@ if __name__ == '__main__':
     app.run()
 
 ```
-Render templatede gönderdiğimiz `context` değişkeni `HTML` dosyasında parse ediliyor ve bilgiler güzel bir şekilde gösteriliyor. Dediğim gibi basit şekilde *Flask* bildiğiniz düşünüyorum.
+Render templatede gönderilen `context` değişkeni `HTML` dosyasında parse ediliyor ve bilgiler güzel bir şekilde gösteriliyor. Dediğim gibi basit şekilde *Flask* bildiğiniz düşünüyorum.
 
-
-Bundan sonra yapmanız gereken işlem sadece bu dosyayı çalıştırıp kendiniz test edebilirsiniz. Beğendiyseniz paylaşırsanız çok sevinirim. İyi öğrenmeler.
+Beğendiyseniz paylaşırsanız çok sevinirim. İyi öğrenmeler.
